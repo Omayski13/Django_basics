@@ -1,0 +1,54 @@
+<style>
+    .young{color:green}
+    .old{color:red}
+    
+</style>
+
+<h1>{{ title|default:'no title' }}</h1>
+<p> person with dict</p>
+<h4>{{ person.first_name }}</h4>
+<h4>{{ person.last_name }}</h4>
+<p> person with class</p>
+<h4>{{ person_class.first_name }}</h4>
+<h4>{{ person_class.last_name }}</h4>
+<p></p>
+<p></p>
+<p></p>
+
+
+
+<h1>Filter </h1>
+<h4>{{ person_class.full_name|slice:4 }}</h4>
+<h4>{{ person_class.full_name|truncatechars:4 }}</h4>
+<h4>{{ person_class.full_name|first }}</h4>
+<h4>{{ person_class.full_name|length }}</h4>
+<h4>{{ 13|floatformat:3 }}</h4>
+<h4>{{ names|join:', ' }}</h4>
+<p></p>
+<p></p>
+<p></p>
+
+
+<h1>Tags </h1>
+<h3> for loop with colors</h3>
+{% for a in ages %}
+<ul>
+    {% if a < 29 %}
+        <li class="young" > {{ a }} </li>
+    {% else %}
+        <li class="old" > {{ a }} </li>
+    {% endif %}
+</ul>    
+
+{% endfor %}
+
+<h3> for loop with link</h3>
+
+{% for a in ages %}
+<ul>
+    <a href="{% url 'index' %}?age={{ a }}">{{ a }} </a>    
+</ul>
+{% endfor %}
+
+
+
